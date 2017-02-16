@@ -1,0 +1,4 @@
+#!/home/kromatin/tugasakhir/tmp/buildbot/sandbox/bin/python
+# EASY-INSTALL-SCRIPT: 'buildbot==0.9.0rc1','buildbot'
+__requires__ = 'buildbot==0.9.0rc1'
+__import__('pkg_resources').run_script('buildbot==0.9.0rc1', 'buildbot')

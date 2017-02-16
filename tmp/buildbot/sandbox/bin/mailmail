@@ -1,0 +1,4 @@
+#!/home/kromatin/tugasakhir/tmp/buildbot/sandbox/bin/python
+# EASY-INSTALL-SCRIPT: 'Twisted==16.1.1','mailmail'
+__requires__ = 'Twisted==16.1.1'
+__import__('pkg_resources').run_script('Twisted==16.1.1', 'mailmail')

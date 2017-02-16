@@ -1,0 +1,4 @@
+#!/home/kromatin/tugasakhir/tmp/buildbot/sandbox/bin/python
+# EASY-INSTALL-SCRIPT: 'sqlparse==0.1.19','sqlformat'
+__requires__ = 'sqlparse==0.1.19'
+__import__('pkg_resources').run_script('sqlparse==0.1.19', 'sqlformat')
