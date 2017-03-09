@@ -3,7 +3,7 @@ var perfy = require('perfy');
  
 var options = {
     url: 'http://localhost:8000',
-    maxRequests: 1000,
+    maxRequests: 100000,
     statusCallback: statusCallback
 };
 
@@ -26,15 +26,10 @@ loadtest.loadTest(options, function(error,result) {
        
     }
     var result1 = perfy.end('waktu');
-    console.log(result1.time + ' sec. '); 
+    console.log(result1.seconds + ' sec, ' + result1.milliseconds.toFixed(3) + ' ms.'); 
 });
 
-// perfy.start('loop-stuff');
-// // some heavy stuff here...
-// var result = perfy.end('loop-stuff');
-// console.log(result.time); // —> 1.459 (sec.)
 
 // perfy.start('metric-1');
 // var result1 = perfy.end('metric-1');
 // console.log(result1.seconds + ' sec, ' + result1.milliseconds.toFixed(3) + ' ms.');
-// console.log(result1.time + ' sec. ');
