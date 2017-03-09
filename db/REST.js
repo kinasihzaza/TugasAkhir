@@ -12,7 +12,7 @@ REST_ROUTER.prototype.handleRoutes = function(router,connection,md5) {
     });
 
     router.get("/email",function(req,res){
-        console.log("bisabajingan");
+        console.log("bisa1");
         var query = "SELECT * FROM ??";
         var table = ["email"];
         query = mysql.format(query,table);
@@ -39,7 +39,7 @@ REST_ROUTER.prototype.handleRoutes = function(router,connection,md5) {
     // });
 
     router.get("/email/from/:email_from",function(req,res){
-        console.log("bisa");
+        console.log("bisa2");
         var query = "SELECT * FROM ?? WHERE ??=?";
         var table = ["email","email_from",req.params.email_from];
         query = mysql.format(query,table);
@@ -53,7 +53,7 @@ REST_ROUTER.prototype.handleRoutes = function(router,connection,md5) {
     });
 
     router.get("/email/to/:email_to",function(req,res){
-        console.log("bisatae");
+        console.log("bisa3");
         var query = "SELECT * FROM ?? WHERE ??=?";
         var table = ["email","email_to",req.params.email_to];
         query = mysql.format(query,table);
@@ -67,7 +67,7 @@ REST_ROUTER.prototype.handleRoutes = function(router,connection,md5) {
     });
 
     router.get("/email/id/:email_id",function(req,res){
-        console.log("bisajing");
+        console.log("bisa4");
         var query = "SELECT * FROM ?? WHERE ??=?";
         var table = ["email","email_id",req.params.email_id];
         query = mysql.format(query,table);
@@ -81,7 +81,7 @@ REST_ROUTER.prototype.handleRoutes = function(router,connection,md5) {
     });
 
     router.post("/email",function(req,res){
-        console.log("bisa insert");
+        console.log("bisa5");
         var query = "INSERT INTO ??(??,??,??) VALUES (?,?,?)";
         var table = ["email","email_from","email_to","message",req.body.email_dari,req.body.email_ke,req.body.pesan];
         query = mysql.format(query,table);
@@ -95,7 +95,7 @@ REST_ROUTER.prototype.handleRoutes = function(router,connection,md5) {
     });
 
     router.put("/email",function(req,res){
-        console.log("bisatot");
+        console.log("bisa6");
         var query = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
         var table = ["email","message",req.body.pesan,"email_from",req.body.email_dari];
         query = mysql.format(query,table);
@@ -109,15 +109,16 @@ REST_ROUTER.prototype.handleRoutes = function(router,connection,md5) {
     });
 
     router.delete("/email/:email_from",function(req,res){
-        console.log("bisasu");
+        console.log("bisa7");
         var query = "DELETE from ?? WHERE ??=?";
-        var table = ["email","email_from",req.params.email_dari];
+        var table = ["email","email_from",req.body.email_dari];
         query = mysql.format(query,table);
+        //console.log(req.body.email_dari);
         connection.query(query,function(err,rows){
             if(err) {
                 res.json({"Error" : true, "Message" : "Error executing MySQL query"});
             } else {
-                res.json({"Error" : false, "Message" : "Deleted the user with email "+req.params.email_dari});
+                res.json({"Error" : false, "Message" : "Deleted the email from "+ req.body.email_dari});
             }
         });
     });
