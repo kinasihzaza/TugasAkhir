@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "arc4": "^3.3.7",
+    "express-validation": "^1.0.1",
     "hapi": "^16.1.0",
+    "joi": "^10.2.2",
     "xxtea-node": "^1.1.2"
   }
 }

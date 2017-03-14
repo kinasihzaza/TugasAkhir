@@ -13,7 +13,7 @@ REST_ROUTER.prototype.handleRoutes = function(router,connection,md5) {
 
     router.get("/email",function(req,res){
         console.log("bisa1");
-        var query = "SELECT * FROM ??";
+        var query = "SELECT * FROM ??" + connection.escape(email);
         var table = ["email"];
         query = mysql.format(query,table);
         connection.query(query,function(err,rows){

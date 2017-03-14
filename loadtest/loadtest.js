@@ -3,7 +3,7 @@ var perfy = require('perfy');
  
 var options = {
     url: 'http://localhost:8000',
-    maxRequests: 100000,
+    maxRequests: 10000,
     statusCallback: statusCallback
 };
 

@@ -13,9 +13,24 @@ var app = express();
   * We are using Mandrill here.
 */
 
+'use strict';
+
+var rootCas = require('ssl-root-cas/latest').create();
+
+rootCas
+  .addFile(__dirname + '/ssl/01-cheap-ssl-intermediary-a.pem')
+  .addFile(__dirname + '/ssl/02-cheap-ssl-intermediary-b.pem')
+  ;
+
+// will work with all https requests will all libraries (i.e. request.js)
+require('https').globalAgent.options.ca = rootCas;
+
+
 var smtpTransport = nodemailer.createTransport(mandrillTransport({
     auth: {
-      apiKey : ''
+      apiKey : '',
+      tls:{
+        rejectUnauthorized: false}
     }
 }));
 /*------------------SMTP Over-----------------------------*/
