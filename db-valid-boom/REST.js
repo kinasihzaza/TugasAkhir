@@ -87,26 +87,79 @@ REST_ROUTER.prototype.handleRoutes = function(router,connection,md5) {
         });
     });
 
-    router.post("/email",function(req,res){
-        console.log("bisa5");
+    // router.post("/email",function(req,res){
+    //     console.log("bisa5");
+    //     // req.checkBody("email", "Enter a valid email address.").isEmail();
+    //     // var errors = req.validationErrors();
+
+    //     var query = "INSERT INTO ??(??,??,??) VALUES (?,?,?)";
+    //     var table = ["email","email_from","email_to","message",req.body.email_dari,req.body.email_ke,req.body.pesan];
+    //     query = mysql.format(query,table);
+
+    //     connection.query(query,function(err,rows){
+    //         if(err) {
+    //             // res.send(errors);
+    //             res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+    //             // res.boom.badRequest("Validation didn't suceed");
+    //             // console.log("salah input woy! Ketik email lu!");
+    //             return;
+    //         } else {
+    //             // req.checkBody("email", "Enter a valid email address.").isEmail();
+    //             // res.json({"Error" : false, "Message" : "pinterrr!! email lu ini kan -> "+req.body.email_dari});
+    //             console.log("bisa alhamdulillah");
+    //             res.json({"Error" : false, "Message" : "Added !"});
+    //         }
+    //     });
+    // });
+
+    router.post("/emailvalid",function(req,res){
+        // console.log("bisa5");
+
         var query = "INSERT INTO ??(??,??,??) VALUES (?,?,?)";
         var table = ["email","email_from","email_to","message",req.body.email_dari,req.body.email_ke,req.body.pesan];
-        query = mysql.format(query,table);
-        connection.query(query,function(err,rows){
-            req.checkBody("email", "Enter a valid email address.").isEmail();
+        query = mysql.format(query,table);    
+
+        connection.query(query,function(errors,rows){
+            req.checkBody('email_dari').isEmail();
             var errors = req.validationErrors();
 
-            if(err) {
+            if(errors) {
+                res.send(errors);
+                // res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+                // res.boom.badRequest("Validation didn't suceed");
+                console.log("salah input woy! Ketik email lu!");
+                return;
+            } else {
+                // req.checkBody("email", "Enter a valid email address.").isEmail();
+                res.json({"Error" : false, "Message" : "pinterrr!! email lu ini kan -> "+req.body.email_dari});
+                console.log("bisa alhamdulillah");
+                // res.json({"Error" : false, "Message" : "Added !"});
+            }
+        });
+    });
+
+    router.post("/emailboom",function(req,res){
+        // console.log("bisa5");
+
+        var query = "INSERT INTO ??(??,??,??) VALUES (?,?,?)";
+        var table = ["email","email_from","email_to","message",req.body.email_dari,req.body.email_ke,req.body.pesan];
+        query = mysql.format(query,table);    
+
+        connection.query(query,function(errors,rows){
+            req.checkBody('email_dari').isEmail();
+            var errors = req.validationErrors();
+
+            if(errors) {
                 // res.send(errors);
+                // res.json({"Error" : true, "Message" : "Error executing MySQL query"});
                 res.boom.badRequest("Validation didn't suceed");
                 console.log("salah input woy! Ketik email lu!");
                 return;
-                //res.json({"Error" : true, "Message" : "Error executing MySQL query"});
             } else {
-                req.checkBody("email", "Enter a valid email address.").isEmail();
-                // res.json({"Error" : false, "Message" : "pinterrr!! email lu ini kan -> "+req.body.email_dari});
+                // req.checkBody("email", "Enter a valid email address.").isEmail();
+                res.json({"Error" : false, "Message" : "pinterrr!! email lu ini kan -> "+req.body.email_dari});
                 console.log("bisa alhamdulillah");
-                //res.json({"Error" : false, "Message" : "Added !"});
+                // res.json({"Error" : false, "Message" : "Added !"});
             }
         });
     });
