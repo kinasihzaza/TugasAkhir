@@ -6,6 +6,7 @@ var rest = require("./REST.js");
 var validator = require('express-validator');
 var boom = require('express-boom'); 
 var app  = express();
+var sqlinjection = require('sql-injection');
 
 // middleware
 // app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,6 +43,7 @@ REST.prototype.configureExpress = function(connection) {
       app.use(bodyParser.json());
       app.use(validator());
       app.use(boom());
+      app.use(sqlinjection);
       var router = express.Router();
       app.use('/api', router);
       var rest_router = new rest(router,connection,md5);
@@ -49,8 +51,8 @@ REST.prototype.configureExpress = function(connection) {
 }
 
 REST.prototype.startServer = function() {
-      app.listen(3000,function(){
-          console.log("All right ! I am alive at Port 3000.");
+      app.listen(8888,function(){
+          console.log("All right ! I am alive at Port 8888.");
       });
 }
 

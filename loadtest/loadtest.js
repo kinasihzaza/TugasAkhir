@@ -1,14 +1,19 @@
 var loadtest = require('loadtest');
 var perfy = require('perfy');
- 
+
 var options = {
-    url: 'http://localhost:8000',
-    maxRequests: 10000,
+    url: 'http://10.151.36.30:8888/api/email',
+    requestsPerSecond:1000,
+    concurent:50,
+    maxRequests: 1000,
+
+    method: 'GET',
     statusCallback: statusCallback
 };
 
 function statusCallback(error, result, latency) {
-    console.log('Current latency %j, result %j, error %j', latency, result, error);
+    console.log('Current latency %j, error %j', latency, error);
+    //console.log('Current latency %j, result %j, error %j', latency, result, error);
     //console.log('----');
     //console.log('Request elapsed milliseconds: ', result.requestElapsed);
     //console.log('Request index: ', result.requestIndex);
@@ -21,12 +26,12 @@ loadtest.loadTest(options, function(error,result) {
         return console.error('Got an error: %s', error);
     }
     else {
-        
+
         console.log('Tests run successfully');
-       
+
     }
     var result1 = perfy.end('waktu');
-    console.log(result1.seconds + ' sec, ' + result1.milliseconds.toFixed(3) + ' ms.'); 
+    console.log(result1.seconds + ' sec, ' + result1.milliseconds.toFixed(3) + ' ms.');
 });
 
 
