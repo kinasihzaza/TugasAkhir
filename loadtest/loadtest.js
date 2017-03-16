@@ -3,8 +3,8 @@ var perfy = require('perfy');
 
 var options = {
     url: 'http://10.151.36.30:8888/api/email',
-    requestsPerSecond:1000,
-    concurent:50,
+    requestsPerSecond:100,
+    concurent:10,
     maxRequests: 1000,
 
     method: 'GET',
