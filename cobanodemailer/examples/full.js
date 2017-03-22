@@ -20,7 +20,8 @@ let transporter = nodemailer.createTransport({
     // default message fields
 
     // sender info
-    from: 'Pangalink <no-reply@pangalink.net>',
+    // from: 'Pangalink <no-reply@pangalink.net>',
+    from: 'Zazaaw <kinasihna@gmail.com>',
     headers: {
         'X-Laziness-level': 1000 // just an example header, no need to use this
     }
@@ -35,45 +36,46 @@ let message = {
     to: 'Nindyasari <nindyasaridewiutari@gmail.com>',
 
     // Subject of the message
-    subject: 'Nodemailer is unicode friendly ✔ #', //
+    subject: 'coba message', //
 
     // plaintext body
     text: 'Hello to myself!',
 
     // HTML body
-    html: '<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>' +
-        '<p>Here\'s a nyan cat for you as an embedded attachment:<br/><img src="cid:nyan@example.com"/></p>',
+    // html: '<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>' +
+    //     '<p>Here\'s a nyan cat for you as an embedded attachment:<br/><img src="cid:nyan@example.com"/></p>',
+    html: 'hai sist',
 
     // Apple Watch specific HTML body
     watchHtml: '<b>Hello</b> to myself',
 
     // An array of attachments
-    attachments: [
+    // attachments: [
 
-        // String attachment
-        {
-            filename: 'notes.txt',
-            content: 'Some notes about this e-mail',
-            contentType: 'text/plain' // optional, would be detected from the filename
-        },
+    //     // String attachment
+    //     {
+    //         filename: 'notes.txt',
+    //         content: 'Some notes about this e-mail',
+    //         contentType: 'text/plain' // optional, would be detected from the filename
+    //     },
 
-        // Binary Buffer attachment
-        {
-            filename: 'image.png',
-            content: new Buffer('iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
-                '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
-                'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC', 'base64'),
+    //     // Binary Buffer attachment
+    //     {
+    //         filename: 'image.png',
+    //         content: new Buffer('iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
+    //             '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
+    //             'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC', 'base64'),
 
-            cid: 'note@example.com' // should be as unique as possible
-        },
+    //         cid: 'note@example.com' // should be as unique as possible
+    //     },
 
-        // File Stream attachment
-        {
-            filename: 'nyan cat ✔.gif',
-            path: __dirname + '/assets/nyan.gif',
-            cid: 'nyan@example.com' // should be as unique as possible
-        }
-    ]
+    //     // File Stream attachment
+    //     {
+    //         filename: 'nyan cat ✔.gif',
+    //         path: __dirname + '/assets/nyan.gif',
+    //         cid: 'nyan@example.com' // should be as unique as possible
+    //     }
+    // ]
 };
 
 console.log('Sending Mail');
