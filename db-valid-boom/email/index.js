@@ -5,10 +5,10 @@ exports.method_send_email = function(targetEmail, bodyEmail, callback){
 	// console.log('* [example1] sending test email');
 	 
 	var send = require('gmail-send')({
-	  user: 'kinasihna@gmail.com',
-	  pass:  'SMAALAZHAR',
+	  user: 'lovely.zaza@gmail.com',
+	  pass:  'SMPIA9KP',
 	  to:   '"User" <'+targetEmailParsed+'>',      // Send back to yoursel	
-	  from:   '"User" <kinasihna@gmail.com>',  // from: by default equals to user 
+	  from:   '"User" <lovely.zaza@gmail.com>',  // from: by default equals to user 
 	  subject: 'test subject',
 	  text:    bodyEmailParsed
 	});
