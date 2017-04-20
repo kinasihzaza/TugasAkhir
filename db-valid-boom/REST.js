@@ -159,7 +159,7 @@ REST_ROUTER.prototype.handleRoutes = function(router,connection,md5) {
 
     router.post("/emailboom",function(req,res){
         // console.log("bisa5");
-        var from =          req.body.email_ke;
+        var from = req.body.email_ke;
         var to = req.body.email_dari;
         var emailToFromBody = req.body.email_ke;
         var bodyEmail = req.body.pesan;
@@ -175,35 +175,31 @@ REST_ROUTER.prototype.handleRoutes = function(router,connection,md5) {
                 query = mysql.format(query,table); 
 
                 connection.query(query,function(errors,rows){
-                req.checkBody('email_dari').isEmail();
-                var errors = req.validationErrors();
+                    req.checkBody('email_dari').isEmail();
+                    var errors = req.validationErrors();
 
-                if(errors) {
-                    // res.send(errors);
-                    // res.json({"Error" : true, "Message" : "Error executing MySQL query"});
-                    res.boom.badRequest("Validation didn't suceed");
-                    console.log("salah input woy! Ketik email lu!");
-                    return;
-                } else {
-                    
-                            var resultEmail = module_email.method_send_email(emailToFromBody, final_body_email_for_db, function(err, result_gmail){
-                                if(err) {
-                                    console.log(err, result_gmail);
-                                    res.json({"Error" : true, "Message" : "EMAIL LIB FAIL", "GMAIL STATUS": result_gmail});
-                                } else {
-                                    res.json({"Error" : false, "Message" : "Encrypted Success and Email Sent to Target", "GMAIL STATUS": result_gmail});
-                                    console.log("ResultEMAIL",result_gmail);
-                                }
-                            });
-                    
-    
-                }
-        });
+                    if(errors) {
+                        // res.send(errors);
+                        // res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+                        res.boom.badRequest("Validation didn't suceed");
+                        console.log("salah input woy! Ketik email lu!");
+                        return;
+                    } 
 
+                    else {
+                        var resultEmail = module_email.method_send_email(emailToFromBody, final_body_email_for_db, function(err, result_gmail){
+                            if(err) {
+                                console.log(err, result_gmail);
+                                res.json({"Error" : true, "Message" : "EMAIL LIB FAIL", "GMAIL STATUS": result_gmail});
+                            } else {
+                                res.json({"Error" : false, "Message" : "Encrypted Success and Email Sent to Target", "GMAIL STATUS": result_gmail});
+                                console.log("ResultEMAIL",result_gmail);
+                            }
+                        });   
+                    }
+                });
             }
-        });
-
-        
+        });  
     });
 
     router.put("/email/update",function(req,res){
