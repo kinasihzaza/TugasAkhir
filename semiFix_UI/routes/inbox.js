@@ -68,7 +68,7 @@ router.get('/viewInbox/:msg_id', require('../middleware/auth.js'), function(req,
             return res.json({"Error" : true, "Message" : "Error executing MySQL query"});
         } else {    
             console.log(rows);
-            var viewInbox2 = {
+            global.viewInbox2 = {
                     'msg_id'     : rows[0].msg_id,
                     'msg_source' : rows[0].msg_source,
                     'msg_plain'  : rows[0].msg_plain,
@@ -88,7 +88,7 @@ router.get('/viewInbox/:msg_id', require('../middleware/auth.js'), function(req,
 }).post("/viewInbox", require('../middleware/auth.js'), function(req, res, next){
 
     var source    = req.session.pisang.user_email;
-    var target    = inbox.msg_source;
+    var target    = viewInbox2.msg_source;
     var pesan     = req.body.msg_plain; 
 
     var query  = "INSERT INTO ??(??,??,??) VALUES (?,?,?)";
