@@ -57,11 +57,15 @@ html(lang='en')
           .col-md-9(style='margin-top: 149px')
             .thumbnail
               .caption-full
-                form#compose.form-horizontal(role='form', action='/email/compose', method='post', style='margin-top: 15px; margin-right: 25px')
+                form#compose.form-horizontal(role='form', action='/email/upload', method='post', enctype='multipart/form-data', style='margin-top: 15px; margin-right: 25px')
                   .form-group
                     label.control-label.col-sm-2(for='email', style='color: #000') To:
                     .col-sm-10
                       input#message.form-control(type='email', placeholder='Enter email to', name='msg_target')
+                  .form-group
+                    label.control-label.col-sm-2(for='email', style='color: #000') Attachment:
+                    .col-sm-10
+                      input#message.form-control(type='file', name='fileUploaded')
                   .form-group
                     label.control-label.col-sm-2(for='pwd', style='color: #000') Message:
                     .col-sm-10
@@ -69,6 +73,9 @@ html(lang='en')
                   .form-group
                     .col-sm-offset-2.col-sm-10
                       button.btn.btn-default(type='submit', style='background: #C2185B; color: #fff; font-size: 13px') Send
+                  //- form(method='post', action='upload', enctype='multipart/form-data')
+                  //-     input(type='file', name='fileUploaded')
+                  //-     input(type='submit')
     
     // jQuery
     script(src='/bootstrap-3.3.1/js/jquery.js')

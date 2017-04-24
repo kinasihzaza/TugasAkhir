@@ -33,10 +33,11 @@ var connection = require('../database.js');
         query = mysql.format(query,table);
 
         connection.query(query,function(err,rows){
+
             if(err) {
                 res.json({"Error" : true, "Message" : "Error executing MySQL query"});
             } else if(rows.length){
-                // res.json(rows);
+                //res.json(rows);
                 req.session.pisang = rows[0];
                 // res.json(req.session.pisang);
                 // res.json({"Error" : false, "Message" : "Success", "Users" : rows});
